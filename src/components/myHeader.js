@@ -23,8 +23,7 @@ class myHeader extends Component{
           defaultSelectedKeys={['1']}
           style={{ lineHeight: '64px'}}
         >
-          <React.Fragment><Icon component={dishSVG}/></React.Fragment>
-          <Menu.Item key="0" ><Link to="/">Home</Link></Menu.Item>
+          <Menu.Item key="0" ><Link to="/"><Icon component={dishSVG}/></Link></Menu.Item>
           <Menu.Item key="1" ><Link to="/data">Data</Link></Menu.Item>
           <Menu.Item key="2" ><Link to="/about">About</Link></Menu.Item>
           <Menu.Item key="3" style={{float: 'right'}}><Link style={{color: 'yellow'}} to="/user">Username</Link></Menu.Item>
