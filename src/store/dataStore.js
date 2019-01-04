@@ -13,11 +13,9 @@ if (process.env.NODE_ENV === 'development') {
     logger,
   ];
   composer = composeWithDevTools;
-  console.log("DEV");
 } else {
   middleware = [];
   composer = compose;
-  console.log("NON-DEV");
 }
 
 export default function configureStore() {
@@ -26,8 +24,6 @@ export default function configureStore() {
     formReducer, undefined, composer(applyMiddleware(...middleware),
     )
   )
-
-  console.log("Datastore use");
 
   if (module.hot) {
       module.hot.accept('../reducers', () => {

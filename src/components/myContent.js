@@ -24,7 +24,9 @@ class myContent extends Component{
       this.props.form.validateFields((err, values) => { 
         if (!err) {
           console.log('Received values of form: ', values);
+          console.log(values.username);
           this.props.saveData(values);
+          this.props.getData(values.username);  
         }
       });
     };
@@ -75,7 +77,7 @@ class myContent extends Component{
               <FormItem>
                 <Button type="primary" htmlType="submit" className="login-form-button">Submit</Button>
                 <Button type="danger" htmlType='reset' className="login-cancel-button" style={{float: "right"}}>Cancel</Button>
-                </FormItem>
+              </FormItem>
           </Form>
         </Col>
       </Content>
@@ -87,6 +89,7 @@ const initMapStateToProps = (state) => ({
   data: state.dataload,
   loaded: state.loaded,
 });
+
 const initMapDispatchToProps = (dispatch) => ({
   saveData: data => dispatch(formActions.saveData(data)),
 });

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Layout, Menu } from 'antd';
 import { Link } from "react-router-dom";
 import { Icon } from 'antd';
+import { connect } from 'react-redux';
 
 //username через меню-итем
 const { Header } = Layout;
@@ -26,11 +27,25 @@ class myHeader extends Component{
           <Menu.Item key="0" ><Link to="/"><Icon component={dishSVG}/></Link></Menu.Item>
           <Menu.Item key="1" ><Link to="/data">Data</Link></Menu.Item>
           <Menu.Item key="2" ><Link to="/about">About</Link></Menu.Item>
-          <Menu.Item key="3" style={{float: 'right'}}><Link style={{color: 'yellow'}} to="/user">Username</Link></Menu.Item>
+          <Menu.Item key="3" style={{float: 'right'}}>
+            <Link style={{color: 'yellow'}} to="/user">
+              {
+                (this.props.data.username === "UserName") ? 
+                (this.props.data.username) : 
+                (this.props.data.data.username)
+              }
+            </Link>
+          </Menu.Item>
         </Menu>     
       </Header>
     );
   }
 }
 
-export default myHeader;
+const initMapStateToProps = (state) => ({
+  data: state.dataload,
+  loaded: true,
+});
+
+const connection = connect(initMapStateToProps,undefined)(myHeader);
+export default connection;
