@@ -1,3 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
+import MyTable from '../components/myTable.js';
 
-export default () => <h1>Data</h1>;
+class Data extends Component{
+  render(){
+    return(
+      <React.Fragment>
+        <MyTable/>
+      </React.Fragment>
+    )
+  }
+}
+
+export default Data;

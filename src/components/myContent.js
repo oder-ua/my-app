@@ -24,9 +24,9 @@ class myContent extends Component{
       this.props.form.validateFields((err, values) => { 
         if (!err) {
           console.log('Received values of form: ', values);
-          console.log(values.username);
           this.props.saveData(values);
-          this.props.getData(values.username);  
+          alert("Thanks for response, " + values.username + "!");
+          this.props.form.resetFields(); 
         }
       });
     };
@@ -42,7 +42,8 @@ class myContent extends Component{
                 rules: [
                   { required: true, message: 'Please input your username!' },
                   { validator: this.validateSymbols },
-                  ],
+                ],
+                initialValue: "",
               })(
                 <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
               )}
@@ -53,6 +54,7 @@ class myContent extends Component{
                   { required: true, message: 'Please input your Surname!' },
                   { validator: this.validateSymbols },
                 ],
+                initialValue: "",
               })(
                 <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} type="user" placeholder="Surname" />
               )}
@@ -62,14 +64,16 @@ class myContent extends Component{
                 rules: [
                   { required: true, message: 'Incorrect input!'},
                   { type: 'email', message: 'Invalid email!'}
-                  ]
+                ],
+                initialValue: "",
               })(
                 <Input prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }}/>} type="email" placeholder="Email" />
               )}
               </FormItem>
               <FormItem>
               {getFieldDecorator('response', {
-                rules : [{ required: true, message : 'Response cannot be empty!' }]
+                rules : [{ required: true, message : 'Response cannot be empty!' }],
+                initialValue: "",
               })(
                 <TextArea style={{color: 'rgba(0,0,0,.25)'}} placeholder="Response" autosize={{minRows: 3, maxRows: 7}}/>
               )}
@@ -87,7 +91,7 @@ class myContent extends Component{
 const WrappedContent = Form.create()(myContent);
 const initMapStateToProps = (state) => ({
   data: state.dataload,
-  loaded: state.loaded,
+  loaded: !state.loaded,
 });
 
 const initMapDispatchToProps = (dispatch) => ({

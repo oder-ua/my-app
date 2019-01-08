@@ -12,7 +12,7 @@ export default function (state = INITIAL_STATE, { type, dataload }) {
       return {
         ...state,
         dataload: dataload,
-        loaded: false,
+        loaded: !state.loaded,
       };
 
     default:
