@@ -17,6 +17,7 @@ const dishSVG = () => (
 class myHeader extends Component{
   render(){
     return (
+      //console.log(this.props.data),
       <Header>
         <Menu 
           theme="dark"
@@ -44,7 +45,10 @@ class myHeader extends Component{
 
 const initMapStateToProps = (state) => ({
   data: state.dataload,
-  loaded: true,
+  //loaded: !state.loaded,
+  /*show: (function(){
+    console.log("HERE "+ state.dataload.data);
+  })()*/
 });
 
 const connection = connect(initMapStateToProps,undefined)(myHeader);
