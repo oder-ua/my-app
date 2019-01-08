@@ -17,7 +17,6 @@ const dishSVG = () => (
 class myHeader extends Component{
   render(){
     return (
-      //console.log(this.props.data),
       <Header>
         <Menu 
           theme="dark"
@@ -31,9 +30,7 @@ class myHeader extends Component{
           <Menu.Item key="3" style={{float: 'right'}}>
             <Link style={{color: 'yellow'}} to="/user">
               {
-                (this.props.data.username === "UserName") ? 
-                (this.props.data.username) : 
-                (this.props.data.data.username)
+                (this.props.data.length > 0) ? (this.props.data[0].username) : ("UserName")
               }
             </Link>
           </Menu.Item>
@@ -45,10 +42,6 @@ class myHeader extends Component{
 
 const initMapStateToProps = (state) => ({
   data: state.dataload,
-  //loaded: !state.loaded,
-  /*show: (function(){
-    console.log("HERE "+ state.dataload.data);
-  })()*/
 });
 
 const connection = connect(initMapStateToProps,undefined)(myHeader);
