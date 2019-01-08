@@ -1,8 +1,7 @@
 import { DATA_SAVE } from '../actions/formAcions.js';
 
 const INITIAL_STATE = {
-  dataload: {username: "UserName"},
-  loaded: null,
+  dataload: [],
 };
 
 export default function (state = INITIAL_STATE, { type, dataload }) {
@@ -11,8 +10,7 @@ export default function (state = INITIAL_STATE, { type, dataload }) {
     case DATA_SAVE:
       return {
         ...state,
-        dataload: dataload,
-        loaded: !state.loaded,
+        dataload: [...state.dataload, dataload.data],
       };
 
     default:

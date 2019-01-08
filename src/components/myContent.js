@@ -34,7 +34,7 @@ class myContent extends Component{
     render(){
     const { getFieldDecorator } = this.props.form;
     return (
-      <Content style={{ padding: '50px 50px 50px 50px', background: '#fff', minHeight: 280,}}>
+      <Content style={{ padding: '50px 50px 50px 50px', background: '#fff', minHeight: '280px',}}>
         <Col span={12} offset={6}>
           <Form onSubmit={this.handleSubmit} className="login-form" style={{backgroundColor: '#ABA8A8', padding: '35px 35px 5px 35px'}}>
             <FormItem>
@@ -91,7 +91,6 @@ class myContent extends Component{
 const WrappedContent = Form.create()(myContent);
 const initMapStateToProps = (state) => ({
   data: state.dataload,
-  loaded: !state.loaded,
 });
 
 const initMapDispatchToProps = (dispatch) => ({
