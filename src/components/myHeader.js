@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { Icon } from 'antd';
 import { connect } from 'react-redux';
 
-//username через меню-итем
 const { Header } = Layout;
 
 const dishSVG = () => (
@@ -21,7 +20,6 @@ class myHeader extends Component{
         <Menu 
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['1']}
           style={{ lineHeight: '64px'}}
         >
           <Menu.Item key="0" ><Link to="/"><Icon component={dishSVG}/></Link></Menu.Item>

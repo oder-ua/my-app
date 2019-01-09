@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class myTable extends Component{
-  renderTableROw = () => {
+  renderTableRow = () => {
     return this.props.data.map(formData => {
       return (
-      //caution! two responses of one username triggers warning
-      <React.Fragment key={formData.username}>
-      <tr>
-        <td>{formData.username}</td>
-        <td>{formData.surname}</td>
-        <td>{formData.email}</td>
-        <td>{formData.response}</td>
-      </tr>
-      </React.Fragment>
+        <React.Fragment key={formData.username + formData.surname + formData.email + formData.response}>
+          <tr>
+            <td>{formData.username}</td>
+            <td>{formData.surname}</td>
+            <td>{formData.email}</td>
+            <td>{formData.response}</td>
+          </tr>
+        </React.Fragment>
       )
     });
   };
@@ -33,7 +32,7 @@ class myTable extends Component{
           <tbody>
             {
               (this.props.data.length > 0) ? 
-              (this.renderTableROw()) : 
+              (this.renderTableRow()) : 
               (<React.Fragment></React.Fragment>)
             }
           </tbody>
@@ -45,8 +44,6 @@ class myTable extends Component{
 
 const initMapStateToProps = (state) => ({
   data: state.dataload,
-  loaded: !state.loaded,
-  add: true,
 });
 
 export default connect(initMapStateToProps,undefined)(myTable);
