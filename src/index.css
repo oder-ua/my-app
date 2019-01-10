@@ -7,7 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-td, th{
+td, th, tr{
   border: 2px solid black;
 }
 table{
